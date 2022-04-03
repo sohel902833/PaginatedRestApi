@@ -4,6 +4,7 @@ const { users, posts } = require("./data");
 const mongoose = require("mongoose");
 const User = require("./usersSchema");
 const e = require("express");
+var cors = require('cors')
 
 mongoose.connect("mongodb://localhost/pagination", {
   useNewUrlParser: true,
@@ -14,33 +15,43 @@ db.once("open", async () => {
   if (User.countDocuments().exec() > 0) return;
 
   Promise.all([
-    User.create({ name: "User 1" }),
-    User.create({ name: "User 2" }),
-    User.create({ name: "User 3" }),
-    User.create({ name: "User 4" }),
-    User.create({ name: "User 5" }),
-    User.create({ name: "User 6" }),
-    User.create({ name: "User 7" }),
-    User.create({ name: "User 8" }),
-    User.create({ name: "User 9" }),
-    User.create({ name: "User 10" }),
-    User.create({ name: "User 11" }),
-    User.create({ name: "User 12" }),
-    User.create({ name: "User 13" }),
-    User.create({ name: "User 14" }),
-    User.create({ name: "User 15" }),
-    User.create({ name: "User 16" }),
-    User.create({ name: "User 17" }),
-    User.create({ name: "User 18" }),
-    User.create({ name: "User 19" }),
-    User.create({ name: "User 20" }),
-    User.create({ name: "User 21" }),
+    User.create({ name: "User 1",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero."}),
+    User.create({ name: "User 2",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 3",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 4",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 5",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 6",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 7",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 8",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 9",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 10",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 11",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 12",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 13",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 14",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 15",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 16",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 17",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 18",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 19",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 20",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 21",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 22",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 23",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 24",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 25",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 26",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 27",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 28",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
+    User.create({ name: "User 29",desc: "Et lorem dolores dolor lorem takimata no sadipscing eos, diam amet gubergren sadipscing tempor amet dolor amet clita, lorem vero." }),
   ])
     .then(() => console.log("User Created."))
     .catch((err) => {
       console.log(err);
     });
 });
+
+app.use(cors())
 //routes
 app.get("/users", paginatedResults(User), (req, res, next) => {
   res.status(201).json(res.paginatedResults);

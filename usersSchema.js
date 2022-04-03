@@ -5,6 +5,10 @@ const usersSchema = new Schema({
     type: String,
     required: true,
   },
+  desc: {
+    type: String,
+    required: true,
+  },
 });
 
 const User = mongoose.model("Users", usersSchema);
